@@ -1,38 +1,29 @@
-**_<h1 align="center">:vulcan_salute: Proyecto Realizado con Andoid Studio :computer:</h1>_**
+**_<h1 align="center">:vulcan_salute: Proyecto Realizado con Andoid Studio dividido en Etapas y concluye como NVP de App de Seguridad  Vecinal:computer:</h1>_**
 
-**<h3>:blue_book: Contexto de la Actividad:</h3>**
+**<h3>:blue_book: Descripción de la Problemática Abordada:</h3>**
 
-<p>Este ejercicio es la continuación del ejercicio grupal del día anterior.</p>
-<p>Una empresa de asesorías en prevención de riesgos necesita contar con un sistema de información que le permita administrar los principales procesos que se llevan a cabo en ella día a día.</p>
-<p>Hasta antes de la última reunión del equipo de proyecto, el modelo de datos se veía de la siguiente manera:</p>
+<p><b>Contexto</b></p>
+<p>En comunidades residenciales como villas y condominios, existe una necesidad crítica de sistemas de alerta temprana que permitan a los vecinos comunicar situaciones de emergencia de manera rápida y efectiva. Las soluciones comerciales actuales presentan limitaciones significativas:</p>
+<p>Alto costo económico: Las aplicaciones profesionales de seguridad tienen tarifas mensuales elevadas que resultan inaccesibles para comunidades completas.</p>
+<p><b>Capacidad limitada de usuarios:</b> Los planes disponibles restringen el número de cuentas, lo que imposibilita su implementación en villas grandes (como la nuestra, con más de 1,300 viviendas).
+Falta de personalización: Las soluciones genéricas no se adaptan a las necesidades específicas de cada comunidad.</p>
+<p><b>Tiempo de respuesta:</b> En emergencias médicas o delitos en curso, cada segundo cuenta. Se requiere un sistema que permita activación inmediata sin necesidad de desbloquear el teléfono o navegar por múltiples menús.</p>
 
-<img src="./app/src/main/res/drawable/wireframe_calculadora_propinas.png" alt="Wireframe Aplicacion" style="width: 80%;">
+<p><b>Problemática Específica</b></p>
+<p>Los residentes de nuestra villa necesitan:</p>
 
-**<h3>:orange_book: Requerimiento:</h3>**
+1. Un método instantáneo para reportar emergencias médicas y delitos
+2. Un sistema que geolocalice automáticamente al usuario en emergencia
+3. Notificaciones inmedia tas a todos los vecinos de la comunidad
+3. Una plataforma accesible económicamente para toda la villa
+4. Un sistema que identifique quién y dónde está ocurriendo la emergencia
 
-<p>Se solicita que desarrolle un conjunto de sentencias SQL que permita pasar desde el modelo de datos original al modelo de datos actualizado, utilizando las consultas vistas en la clase. No es necesario que sea solo una consulta, lo puede hacer en base a una transacción que tenga un inicio y fin determinados, con consultas independientes, pero que forman parte de un conjunto mayor de instrucciones.</p>
-<p>Considere que se piden solo las consultas de actualización, no el modelo completo.</p>
-<p><b>Nota:</b> No se permite la eliminación y posterior creación de tablas; puede eliminar o modificar campos de una tabla.</p>
+**<h3>:orange_book: Solución Propuesta:</h3>**
 
-**<h3>:book: Link a video en Youtube que muestra proyecto ejecutado:</h3>**
-
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=6VQe9vkByBM" target="_blank" style="display:inline-block; padding:10px 20px; background:#ff0000; color:white; border-radius:8px; text-decoration:none; font-weight:bold;">
-    ▶️ Ver en YouTube
-  </a>
-</p>
+<p><b>Emergencia Vecinal</b> es una aplicación móvil Android desarrollada en Kotlin que permite a los miembros de una comunidad reportar y recibir alertas de emergencias en tiempo real, facilitando la ayuda mutua entre vecinos.</p>
+<p>El proyecto se va a entregar en etapas y con el avance de cada una se documentara acá</p>
 
 **<h3>📁 Estructura del Proyecto Android:</h3>**
-
-Leyenda rápida
-
-📁 carpeta
-🟧 HTML
-🟦 CSS
-🟨 JavaScript
-🟩 JSON
-🖼️ imagen
-📘 Markdown
 
 ```Android
 📘 README.md

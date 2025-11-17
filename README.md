@@ -76,8 +76,8 @@ Falta de personalización: Las soluciones genéricas no se adaptan a las necesid
 
 **<h3>:book: Imagen general del proyecto:</h3>**
 
-<img src="./app/src/main/res/drawable/emulador_etapa_1_img1.jpg" alt="Proyecto Vista General etapa 1" style="width: 80%;">
+<img src="./app/src/main/res/drawable/emulador_etapa_1_img2.jpg" alt="Proyecto Vista General etapa 1" style="width: 80%;">
 
 **<h3>:book: Capturas de pantalla de la interfaz de usuario final:</h3>**
 
-<img src="./app/src/main/res/drawable/emulador_etapa_1_img2.jpg" alt="Vista Celular etapa 1" style="width: 40%;">
+<img src="./app/src/main/res/drawable/emulador_etapa_1_img1.jpg" alt="Vista Celular etapa 1" style="width: 40%;">

@@ -1,0 +1,57 @@
+<resources>
+<!--    <string name=" ">xx</string>-->
+    <string name="app_name">Emergencia Vecinal</string>
+
+    <!-- Splash -->
+    <string name="splash_title">Emergencia Vecinal</string>
+    <string name="splash_subtitle">Tu seguridad, nuestra comunidad</string>
+
+    <!-- Login -->
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="no_account">¿No tienes cuenta?</string>
+    <string name="register_here">Regístrate aquí</string>
+
+    <!-- Register -->
+    <string name="register_title">Crear Cuenta</string>
+    <string name="name">Nombre completo</string>
+    <string name="etName">textPersonName</string>
+<!--    <string name="email">Correo electrónico</string>-->
+    <string name="etEmail">textEmailAddress</string>
+    <string name="address">Dirección</string>
+    <string name="etAdd">textPostalAddress</string>
+    <string name="phone">Teléfono</string>
+    <string name="etPhone">phone</string>
+    <string name="rut">RUT</string>
+    <string name="etRut">text</string>
+<!--    <string name="password">Contraseña</string>-->
+    <string name="etPass">textPassword</string>
+    <string name="register_button">Registrarse</string>
+<!--    <string name="register_here">Regístrate aquí</string>-->
+    <string name="have_account">¿Ya tienes cuenta?</string>
+    <string name="login_here">Inicia sesión aquí</string>
+
+    <!-- Main -->
+    <string name="emergency_medical">Emergencia\nMédica</string>
+    <string name="emergency_crime">Emergencia\nDelito</string>
+    <string name="access_app">Ingresar\na la App</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="main_instructions">Usa los botones superiores para:\n• Reportar emergencia médica\n• Reportar emergencia de delito\n• Acceder a tu perfil</string>
+    <string name="user_default">Usuario</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Mi Perfil</string>
+    <string name="edit_profile">Editar Perfil</string>
+    <string name="save_changes">Guardar Cambios</string>
+    <string name="logout">Cerrar Sesión</string>
+
+    <!-- Errors -->
+    <string name="error_empty_fields">Por favor completa todos los campos</string>
+    <string name="error_invalid_email">Correo electrónico inválido</string>
+    <string name="error_short_password">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="error_login">Error al iniciar sesión</string>
+    <string name="error_register">Error al registrarse</string>
+
+</resources>

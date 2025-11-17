@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Colores principales -->
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+
+    <!-- Colores de emergencia -->
+    <color name="emergency_medical">#F44336</color>
+    <color name="emergency_crime">#FF9800</color>
+    <color name="emergency_access">#4CAF50</color>
+
+    <!-- Colores de fondo -->
+    <color name="background">#F5F5F5</color>
+    <color name="card_background">#FFFFFF</color>
+</resources>

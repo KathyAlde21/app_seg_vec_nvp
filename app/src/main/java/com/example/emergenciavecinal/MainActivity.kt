@@ -1,23 +1,41 @@
 package com.example.emergenciavecinal
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.example.emergenciavecinal.models.Alert
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    private lateinit var btnEmergencyMedical: Button
-    private lateinit var btnEmergencyCrime: Button
-    private lateinit var btnAccessApp: Button
+    private lateinit var btnEmergencyMedical: LinearLayout
+    private lateinit var btnEmergencyCrime: LinearLayout
+    private lateinit var btnAccessApp: LinearLayout
     private lateinit var tvUserName: TextView
+
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1001
+    private var pendingAlertType: String? = null // Para saber qué alerta activar después del permiso
+
+    // Datos del usuario
+    private var userName = ""
+    private var userAddress = ""
+    private var userPhone = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         // Inicializar vistas
         btnEmergencyMedical = findViewById(R.id.btnEmergencyMedical)
@@ -35,19 +54,19 @@ class MainActivity : AppCompatActivity() {
         // Cargar datos del usuario
         loadUserData()
 
-        // Botón Emergencia Médica (por ahora solo muestra mensaje)
+        // Botón Emergencia Médica
         btnEmergencyMedical.setOnClickListener {
-            Toast.makeText(this, "Emergencia Médica - Funcionalidad pendiente (Entrega 2)", Toast.LENGTH_SHORT).show()
+            showConfirmationDialog("medica")
         }
 
-        // Botón Emergencia Delito (por ahora solo muestra mensaje)
+        // Botón Emergencia Delito
         btnEmergencyCrime.setOnClickListener {
-            Toast.makeText(this, "Emergencia Delito - Funcionalidad pendiente (Entrega 2)", Toast.LENGTH_SHORT).show()
+            showConfirmationDialog("delito")
         }
 
-        // Botón Ingresar a la App (ir al perfil)
+        // Botón Ingresar a la App (mostrar menú)
         btnAccessApp.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            showAccessMenu()
         }
     }
 
@@ -59,8 +78,10 @@ class MainActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    val nombre = document.getString("nombre") ?: "Usuario"
-                    tvUserName.text = nombre
+                    userName = document.getString("nombre") ?: "Usuario"
+                    userAddress = document.getString("direccion") ?: ""
+                    userPhone = document.getString("telefono") ?: ""
+                    tvUserName.text = userName
                 }
             }
             .addOnFailureListener { e ->
@@ -68,9 +89,137 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    private fun showConfirmationDialog(tipoEmergencia: String) {
+        val message = if (tipoEmergencia == "medica") {
+            getString(R.string.confirm_medical_message)
+        } else {
+            getString(R.string.confirm_crime_message)
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.confirm_alert_title))
+            .setMessage(message)
+            .setPositiveButton(getString(R.string.confirm_yes)) { _, _ ->
+                checkLocationPermissionAndSendAlert(tipoEmergencia)
+            }
+            .setNegativeButton(getString(R.string.confirm_no), null)
+            .show()
+    }
+
+    private fun checkLocationPermissionAndSendAlert(tipoEmergencia: String) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            // Permiso ya otorgado, enviar alerta
+            sendAlert(tipoEmergencia)
+        } else {
+            // Solicitar permiso
+            pendingAlertType = tipoEmergencia
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permiso otorgado, enviar alerta pendiente
+                pendingAlertType?.let { sendAlert(it) }
+                pendingAlertType = null
+            } else {
+                // Permiso denegado
+                Toast.makeText(
+                    this,
+                    getString(R.string.location_permission_required),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
+    private fun sendAlert(tipoEmergencia: String) {
+        Toast.makeText(this, getString(R.string.getting_location), Toast.LENGTH_SHORT).show()
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+
+        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+            if (location != null) {
+                // Crear alerta
+                val alertId = UUID.randomUUID().toString()
+                val userId = auth.currentUser?.uid ?: return@addOnSuccessListener
+
+                val alert = Alert(
+                    alertId = alertId,
+                    userId = userId,
+                    userName = userName,
+                    userAddress = userAddress,
+                    userPhone = userPhone,
+                    tipoEmergencia = tipoEmergencia,
+                    latitud = location.latitude,
+                    longitud = location.longitude,
+                    fechaHora = System.currentTimeMillis(),
+                    estado = "activa"
+                )
+
+                // Guardar en Firestore
+                firestore.collection("alertas")
+                    .document(alertId)
+                    .set(alert)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, getString(R.string.alert_sent), Toast.LENGTH_LONG).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(
+                            this,
+                            "${getString(R.string.alert_error)}: ${e.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+            } else {
+                Toast.makeText(this, "No se pudo obtener la ubicación", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun showAccessMenu() {
+        val options = arrayOf(
+            getString(R.string.profile_title),
+            getString(R.string.view_history)
+        )
+
+        AlertDialog.Builder(this)
+            .setTitle("Opciones")
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> startActivity(Intent(this, ProfileActivity::class.java))
+                    1 -> startActivity(Intent(this, AlertHistoryActivity::class.java))
+                }
+            }
+            .show()
+    }
+
     override fun onResume() {
         super.onResume()
-        // Recargar datos del usuario cuando vuelve de otra pantalla
         loadUserData()
     }
 }

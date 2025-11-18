@@ -30,29 +30,40 @@ Falta de personalización: Las soluciones genéricas no se adaptan a las necesid
 📁 app/src/main/
 ├── 🟧 AndroidManifest.xml
 ├── 📁 java
-│   ├── 📁 com.example.holamundo
+│   ├── 📁 com.example.emergenciavecinal
+│   │   ├── 📁 models
+│   │   │    ├── 🟦 User.kt
+│   │   │    └── 🟦 Alert.kt
 │   │   ├── 📁 ui
 │   │   │   └── 📁 theme
 │   │   │    ├── 🟦 Color.kt
 │   │   │    ├── 🟦 Theme.kt
 │   │   │    └── 🟦 Type.kt
-|   |   ├── 🟦 DeveloperProfile.kt
-|   |   ├── 🟦 KotlinFeaturesDemo.kt
-│   │   └── 🟦 MainActivity.kt
-│   ├── 📁 com.example.holamundo (android Test)
+|   |   ├── 🟦 LoginActivity.kt
+|   |   ├── 🟦 MainActivity.kt
+|   |   ├── 🟦 ProfileActivity.kt
+|   |   ├── 🟦 RegisterActivity.kt
+|   |   ├── 🟦 SplashActivity.kt
+│   │   └── 🟦 AlertHistoryActivity.kt
+│   ├── 📁 com.example.emergenciavecinal (android Test)
 │   │   └── 🟦 ExampleInstrumentedTest.java
-│   └── 📁 com.example.holamundo (test)
+│   └── 📁 com.example.emergenciavecinal (test)
 │       └── 🟦 ExampleUnitTest.java
 ├── 📁 java (generated)
 ├── 📁 res
 │   ├── 📁 drawable
-│   │   │    ├── 🖼️ hello_world_cellphone.png
-│   │   │    ├── 🖼️ image_project.jpg
-│   │   │    ├── 🖼️ world.jpg
+│   │   │    ├── 🖼️ emulador_etapa_1_img1.jpg
+│   │   │    ├── 🖼️ emulador_etapa_1_img2.jpg
 │   │   │    ├── 🟧 ic_launcher_background.xml
 │   │   │    └── 🟧 ic_launcher_foreground.xml
 │   ├── 📁 layout
-│   │   └── 🟧 activity_main.xml
+│   │   ├── 🟧 activity_login.xml
+│   │   ├── 🟧 activity_main.xml
+│   │   ├── 🟧 activity_profile.xml
+│   │   ├── 🟧 activity_register.xml
+│   │   ├── 🟧 activity_splash.xml
+│   │   ├── 🟧 activity_alert_history.xml
+│   │   └── 🟧 item_alert.xml
 │   ├── 📁 mipmap
 │   │   ├── 📁 ic_launcher
 │   │   └── 📁 ic_launcher_round
@@ -64,7 +75,7 @@ Falta de personalización: Las soluciones genéricas no se adaptan a las necesid
 │   │   └── 🟧 strings.xml
 │   └── 📁 xml
 📁 Gradle Scripts
-├── 🟦 build.gradle.kts (Project: HolaMundo)
+├── 🟦 build.gradle.kts (Project: EmergenciaVecinal)
 ├── 🟦 build.gradle.kts (Module: app)
 ├── 🟦 proguard-rules.pro (ProGuard rules for ":app")
 ├── 🟦 gradle.properties (Project properties)
@@ -80,4 +91,4 @@ Falta de personalización: Las soluciones genéricas no se adaptan a las necesid
 
 **<h3>:book: Capturas de pantalla de la interfaz de usuario final:</h3>**
 
-<img src="./app/src/main/res/drawable/emulador_etapa_1_img1.jpg" alt="Vista Celular etapa 1" style="width: 40%;">
+<img src="./app/src/main/res/drawable/emulador_etapa_1_img1.jpg" alt="Vista Celular etapa 1" style="width: 30%;">

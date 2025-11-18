@@ -61,10 +61,13 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    //agregada manualmente por firebase
+    // Firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+
+    // Google Play Services - Location
+    implementation(libs.play.services.location)
 
     // Material Design y AppCompat
     implementation(libs.androidx.appcompat)

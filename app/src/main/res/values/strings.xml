@@ -54,4 +54,28 @@
     <string name="error_login">Error al iniciar sesión</string>
     <string name="error_register">Error al registrarse</string>
 
+    <!-- Alert History -->
+    <string name="alert_history_title">Historial de Alertas</string>
+    <string name="no_alerts">No hay alertas registradas</string>
+    <string name="alert_medical">Emergencia Médica</string>
+    <string name="alert_crime">Emergencia Delito</string>
+    <string name="alert_status_active">Activa</string>
+    <string name="alert_status_resolved">Resuelta</string>
+    <string name="alert_status_false">Falsa Alarma</string>
+
+    <!-- Alert Confirmation -->
+    <string name="confirm_alert_title">Confirmar Emergencia</string>
+    <string name="confirm_medical_message">¿Estás segura de activar una alerta de EMERGENCIA MÉDICA?\n\nSe enviará tu ubicación a todos los vecinos.</string>
+    <string name="confirm_crime_message">¿Estás segura de activar una alerta de EMERGENCIA DELITO?\n\nSe enviará tu ubicación a todos los vecinos.</string>
+    <string name="confirm_yes">Sí, Activar Alerta</string>
+    <string name="confirm_no">Cancelar</string>
+
+    <!-- Alert Messages -->
+    <string name="alert_sent">Alerta enviada exitosamente</string>
+    <string name="alert_error">Error al enviar alerta</string>
+    <string name="location_permission_required">Se requiere permiso de ubicación para enviar alertas</string>
+    <string name="getting_location">Obteniendo ubicación…</string>
+
+    <!-- Menu -->
+    <string name="view_history">Ver Historial</string>
 </resources>

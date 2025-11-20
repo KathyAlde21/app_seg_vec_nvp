@@ -5,6 +5,7 @@
     <!-- Splash -->
     <string name="splash_title">Emergencia Vecinal</string>
     <string name="splash_subtitle">Tu seguridad, nuestra comunidad</string>
+    <string name="test_mode">Modo Prueba</string>
 
     <!-- Login -->
     <string name="login_title">Iniciar Sesión</string>

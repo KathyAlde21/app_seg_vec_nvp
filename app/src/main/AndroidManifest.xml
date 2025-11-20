@@ -45,17 +45,20 @@
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <!-- Profile Activity -->
         <activity
             android:name=".ProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <!-- Alert History Activity -->
         <activity
             android:name=".AlertHistoryActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
     </application>
 

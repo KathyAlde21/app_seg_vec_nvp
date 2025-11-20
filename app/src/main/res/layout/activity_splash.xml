@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
@@ -13,12 +13,12 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <!-- Icono (después se va a reemplazar por un logo) -->
+        <!-- Icono -->
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@android:drawable/ic_dialog_alert"
-            android:tint="@color/white" />
+            app:tint="@color/white" />
 
         <!-- Título -->
         <TextView
@@ -40,5 +40,17 @@
             android:textSize="16sp" />
 
     </LinearLayout>
+
+    <!-- Botón Modo Prueba (abajo) -->
+    <Button
+        android:id="@+id/btnTestMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/emergency_access"
+        android:text="@string/test_mode"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

@@ -17,6 +17,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
+import android.media.MediaPlayer
 
 class MainActivity : AppCompatActivity() {
 
@@ -152,6 +153,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun sendAlert(tipoEmergencia: String) {
+        // Reproducir sonido según tipo de emergencia
+        val soundResId = if (tipoEmergencia == "medica") {
+            R.raw.alert_medical
+        } else {
+            R.raw.alert_crime
+        }
+
+        val mediaPlayer = MediaPlayer.create(this, soundResId)
+        mediaPlayer.setOnCompletionListener { it.release() }
+        mediaPlayer.start()
+
         Toast.makeText(this, getString(R.string.getting_location), Toast.LENGTH_SHORT).show()
 
         if (ActivityCompat.checkSelfPermission(
